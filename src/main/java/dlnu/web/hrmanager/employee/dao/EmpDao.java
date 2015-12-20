@@ -30,7 +30,7 @@ public class EmpDao {
 	{
 
 		String sql="INSERT INTO employee(name,salary,job_id,hiredate,dept_id)VALUES(?,?,?,?,?)";
-		DBUtil.conn().exec(sql,emp.getEmpname(),emp.getEmpsalary(),emp.getEmppost().Get_id(),emp.getEmpdate(),emp.getEmpdept().getId());
+		DBUtil.conn().exec(sql,emp.getEmpname(),emp.getEmpsalary(),emp.getEmppost().getId(),emp.getEmpdate(),emp.getEmpdept().getId());
 
 	}
 
@@ -40,7 +40,7 @@ public class EmpDao {
 
 
 		String sql="UPDATE employee SET name =?,salary=?,job_id=?,hiredate=?,dept_id=? WHERE id =?";
-		DBUtil.conn().exec(sql,emp.getEmpname(),emp.getEmpsalary(),emp.getEmppost().Get_id(),emp.getEmpdate(),emp.getEmpdept().getId(),emp.getEmpID());
+		DBUtil.conn().exec(sql,emp.getEmpname(),emp.getEmpsalary(),emp.getEmppost().getId(),emp.getEmpdate(),emp.getEmpdept().getId(),emp.getEmpID());
 
 	}
 

@@ -54,7 +54,7 @@ public class ManagerTableModel extends AbstractTableModel{
 		case 1:
 			return emps.get(rowIndex).getEmpname();
 		case 2:
-			return emps.get(rowIndex).getEmppost().Get_name();
+			return emps.get(rowIndex).getEmppost().getName();
 
 		default:
 			return null;

@@ -17,27 +17,27 @@ public class Job {
 		salary_avg = 0;
 	}
 	
-	public int Get_id(){
+	public int getId(){
 		return this.id;
 	}
 	
-	public String Get_name(){
+	public String getName(){
 		return this.name;
 	}
 	
-	public double Get_salary_min(){
+	public double getSalarymin(){
 		return this.salary_min;
 	}
 	
-	public double Get_salary_max(){
+	public double getSalarymax(){
 		return this.salary_max;		
 	}
 	
-	public double Get_salary_avg(){
+	public double getSalaryavg(){
 		return this.salary_avg;
 	}
 	public String toString(){
-		return this.Get_name();
+		return this.getName();
 	}
 	
 	public boolean equals(Object obj){

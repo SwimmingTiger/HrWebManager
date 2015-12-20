@@ -220,10 +220,10 @@ public class JobView extends JFrame{
 			
 			public void mouseClicked(MouseEvent e){
 				int row = table.getSelectedRow();
-				text_jno.setText(String.valueOf(model.joblist.get(row).Get_id()));
-				text_jna.setText(model.joblist.get(row).Get_name());
-				text_sal_min.setText(String.valueOf(model.joblist.get(row).Get_salary_min()));
-				text_sal_max.setText(String.valueOf(model.joblist.get(row).Get_salary_max()));
+				text_jno.setText(String.valueOf(model.joblist.get(row).getId()));
+				text_jna.setText(model.joblist.get(row).getName());
+				text_sal_min.setText(String.valueOf(model.joblist.get(row).getSalarymin()));
+				text_sal_max.setText(String.valueOf(model.joblist.get(row).getSalarymax()));
 			}			
 		});
 		

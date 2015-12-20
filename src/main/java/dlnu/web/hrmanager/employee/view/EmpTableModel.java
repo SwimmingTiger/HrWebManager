@@ -56,7 +56,7 @@ public class EmpTableModel extends AbstractTableModel{
 		case 2:
 			return emps.get(rowIndex).getEmpsalary();
 		case 3:
-			return emps.get(rowIndex).getEmppost().Get_name();
+			return emps.get(rowIndex).getEmppost().getName();
 		case 4:
 			return emps.get(rowIndex).getEmpdate();
 		case 5:

@@ -403,9 +403,9 @@ public class EmpView extends JFrame{
 
 		if(i == 1)
 		{
-		if (new Double(txtEmpSalary.getText())>emp.getEmppost().Get_salary_max()||new Double(txtEmpSalary.getText())<emp.getEmppost().Get_salary_min())
+		if (new Double(txtEmpSalary.getText())>emp.getEmppost().getSalarymax()||new Double(txtEmpSalary.getText())<emp.getEmppost().getSalarymin())
 		{
-			dlnu.web.hrmanager.util.Window.showErrorDialog("工资不在范围内", "工资范围为"+emp.getEmppost().Get_salary_min()+"到"+emp.getEmppost().Get_salary_max()+"元");
+			dlnu.web.hrmanager.util.Window.showErrorDialog("工资不在范围内", "工资范围为"+emp.getEmppost().getSalarymin()+"到"+emp.getEmppost().getSalarymax()+"元");
 			emp=null;
 		}
 		}

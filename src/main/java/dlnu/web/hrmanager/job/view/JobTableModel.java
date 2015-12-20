@@ -49,18 +49,18 @@ public class JobTableModel extends AbstractTableModel{
 		
 		switch (columnIndex) {
 		case 0:
-			return job.Get_id();
+			return job.getId();
 		case 1:
-			return job.Get_name();
+			return job.getName();
 		case 2:
-			return job.Get_salary_min();
+			return job.getSalarymin();
 		case 3:
-			return job.Get_salary_max();
+			return job.getSalarymax();
 		case 4:
-			if(job.Get_salary_avg() == -1){
+			if(job.getSalaryavg() == -1){
 				return "暂无员工";
 			}else{
-				return doubleFormat.format(job.Get_salary_avg());
+				return doubleFormat.format(job.getSalaryavg());
 		//		return job.Get_salary_avg;()
 			}
 		default:
