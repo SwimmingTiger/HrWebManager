@@ -51,7 +51,10 @@
 		<td>-</td>
 		<td>-</td>
 		<td>-</td>
-		<td><input type="submit" name="save" value="保存"></td>
+		<td>
+			<input type="submit" name="save" value="添加">
+			<input type="reset" value="重置">
+		</td>
 	</form>
 	</tr>
 </table>

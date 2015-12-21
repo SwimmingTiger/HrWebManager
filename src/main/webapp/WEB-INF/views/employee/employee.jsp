@@ -4,10 +4,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Employee</title>
+	<link rel="stylesheet" href="../resources/css/main.css">
+	<script src="../resources/js/main.js"></script>
 </head>
 <body>
 
-<table>
+<table class="itemsTable">
 	<tr>
 		<th>ID</th>
 		<th>姓名</th>
@@ -27,13 +29,11 @@
 		<td>${emp.empdate}</td>
 		<td>${emp.empdept.name}</td>
 		<td>
-		<form action="delete" method="post">
+		<form class="toolButton" action="delete" method="post">
 			<input type="hidden" name="ID" value="${emp.empID }">
-			<input type="submit" value="删除">
+			<input type="submit" onclick="return DeleteConfirm('${emp.empname}')" value="删除">
 		</form>
-		</td>
-		<td>
-		<form action="edit" method="post">
+		<form class="toolButton" action="edit" method="post">
 		<input type="hidden" name="ID" value="${emp.empID }">
 		<input type="submit" value="编辑">
 		</form>
@@ -62,7 +62,10 @@
 			</c:forEach>
 		</select>
 		</td>
-		<td><input type="submit" value="插入"></td>
+		<td>
+			<input type="submit" value="添加">
+			<input type="reset" value="重置">
+		</td>
 	</form>
 </c:when>
 <c:otherwise>
@@ -87,7 +90,10 @@
 		</select>
 		</td>
 		
-		<td><input type="submit" value="保存"></td>
+		<td>
+			<input type="submit" value="保存">
+			<input type="reset" value="重置">
+		</td>
 	</form>
 </c:otherwise>
 </c:choose>
