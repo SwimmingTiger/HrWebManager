@@ -39,7 +39,7 @@
 
 			<form action="edit" method="post">
 				<input type="submit" value="修改">
-				<input type="hidden" name=" " value = "${job.id}">
+				<input type="hidden" name="编号" value = "${job.id}">
 			</form>
 		</td>
 	</tr>
