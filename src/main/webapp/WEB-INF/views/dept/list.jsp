@@ -27,10 +27,10 @@
 		<td>${dept.id}</td>
 		<td>${dept.name}</td>
 		<td>${dept.address}</td>
-		<td>${dept.manager.empname}</td>
-		<td>${dept.salary_max}</td>
-		<td>${dept.salary_avg}</td>
-		<td>${dept.salary_min}</td>
+		<td>${null == dept.manager.empname ? "-" : dept.manager.empname}</td>
+		<td>${0 == dept.salary_max ? "-" : dept.salary_max}</td>
+		<td>${0 == dept.salary_avg ? "-" : dept.salary_avg}</td>
+		<td>${0 == dept.salary_min ? "-" : dept.salary_min}</td>
 		<td>
 		<form action="delete" method="post">
 			<input type="hidden" name="id" value="${dept.id}">
