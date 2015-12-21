@@ -66,7 +66,8 @@
 	</form>
 </c:when>
 <c:otherwise>
-	<form action="edit" method="post">
+	<form action="save" method="post">
+		<input type="hidden" name="ID" value="${editEmp.empID }">
 		<td></td>
 		<td><input name="empname" value="${editEmp.empname} "></td>
 		<td><input name="empsalary" value="${editEmp.empsalary }"></td>
@@ -85,6 +86,7 @@
 			</c:forEach>
 		</select>
 		</td>
+		
 		<td><input type="submit" value="保存"></td>
 	</form>
 </c:otherwise>

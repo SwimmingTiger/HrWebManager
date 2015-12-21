@@ -84,8 +84,8 @@ public class EmpController {
 			Emp emp1 = new Emp();
 			emp1.setEmpID(empID);
 			
-			EmpDao dao3 = new EmpDao();
-			dao3.Dele(emp1);
+			EmpDao dao2 = new EmpDao();
+			dao2.Dele(emp1);
 		} catch (DBException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -99,10 +99,41 @@ public class EmpController {
 	public String edit(Locale locale, Model model,
 			@RequestParam(value="ID") int empID) {
 		EmpDao dao = new EmpDao();
-		
+		JobDao job = new JobDao();
 		try {
 			Emp editEmp = dao.Inquire(empID);
 			model.addAttribute("editEmp", editEmp);
+		} catch (DBException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		
+		return home(locale, model);
+	}
+	
+	@RequestMapping(value = "/employee/save", method = RequestMethod.POST)
+	public String save(Locale locale, Model model,
+		@RequestParam(value="ID") int empID,
+		@RequestParam(value="empname") String empname,
+		@RequestParam(value="empsalary") Double empsalary,
+		@RequestParam(value="job") int emppost,
+		@RequestParam(value="empdate") String empdate,
+		@RequestParam(value="dept") int empdept) {
+		EmpDao dao = new EmpDao();
+		JobDao job = new JobDao();
+
+		try {
+			
+			Emp editEmp = new Emp();
+			editEmp.setEmpID(empID);
+			editEmp.setEmpname(empname);
+			editEmp.setEmpsalary(empsalary);
+			editEmp.setEmppost(job.Inquire(emppost));
+			editEmp.setEmpdate(empdate);
+			editEmp.setEmpdept(DeptService.getInstance().getDeptById(empdept));
+			dao.Mod(editEmp);
+
 		} catch (DBException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
