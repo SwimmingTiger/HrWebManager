@@ -39,19 +39,24 @@
 
 			<form action="edit" method="post">
 				<input type="submit" value="修改">
-				<input type="hidden" name="id" value = "${job.id}">
+				<input type="hidden" name=" " value = "${job.id}">
 			</form>
 		</td>
 	</tr>
 </c:forEach>
 
-	<form action="add" method="post">
-			<td><input name = "编号"></td>
-			<td><input name = "岗位名称"></td>
-			<td><input name = "平均工资"></td>
-			<td><input name = "最高工资"></td>
-			<td><input name = "最低工资"></td>
-			<td><input type="submit" value="添加"></td>
+	<form action="${JobEdit==null ? 'add' : 'editSave'}" method="post">
+			<td><input name = "编号" value="${JobEdit.id}"></td>			
+			<td><input name = "岗位名称" value="${JobEdit.name}"></td>		
+			<td><input name = "平均工资" value="${JobEdit.salaryavg}"></td>		
+			<td><input name = "最高工资" value="${JobEdit.salarymax}"></td>		
+			<td><input name = "最低工资" value="${JobEdit.salarymin}"></td>	
+			<c:if test="${JobEdit == null}">
+				<td><input type="submit" value="添加"></td>
+			</c:if>
+			<c:if test="${JobEdit != null}">
+				<td><input type="submit" value="编辑"></td>
+			</c:if>
 	</form>
 </table>
 </body>

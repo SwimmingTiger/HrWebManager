@@ -78,14 +78,38 @@ public class JobController {
 	
 	@RequestMapping(value = "/job/edit", method = RequestMethod.POST)
 	public String editPost(Locale locale, Model model,
-			@RequestParam(value="id") int EditId) {
+			@RequestParam(value="编号") int EditId) {
 
 		/***************** 修改 *****************/
 		try {
 			Job job = JobDao.con().Inquire(EditId);
+			model.addAttribute("JobEdit", job);			
 			
-			
-			
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return joblist(locale, model);
+	}
+	
+	@RequestMapping(value = "/job/editSave", method = RequestMethod.POST)
+	public String editSave(Locale locale, Model model,
+			@RequestParam(value="编号") int EditId,
+			@RequestParam(value="岗位名称") String EditName,
+			@RequestParam(value="平均工资") double EditSalary_avg,
+			@RequestParam(value="最高工资") double EditSalary_max,
+			@RequestParam(value="最低工资") double EditSalary_min) {
+
+		/***************** 修改 *****************/
+		try {	
+			Job job = new Job();
+			job.id = EditId;
+			job.name = EditName;
+			job.salary_avg = EditSalary_avg;
+			job.salary_max = EditSalary_max;
+			job.salary_min = EditSalary_min;		
+			JobDao.con().Change(job);
 		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
