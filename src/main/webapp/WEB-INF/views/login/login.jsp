@@ -1,31 +1,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" %>
+<!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Login</title>
+	<title>登录 - 企业员工管理系统</title>
+	<link rel="stylesheet" href="../resources/css/main.css">
+	<script src="../resources/js/main.js"></script>
 </head>
 <body>
-<h1>
-	Hello no Login User!  
-</h1>
-喵呜！
-<!-- 使用EL表达式显示日期  -->
-<P>  The time on the server is ${serverTime}. </P>
-
-<h3>emps:</h3>
-<table>
-	<tr>
-		<th>姓名</th>
-		<th>薪水</th>
-	</tr>
-<!-- 使用 JSTL标签forEach循环显示员工  -->
-<c:forEach var="emp" items="${empList}">
-	<tr>
-		<td>${emp.empname}</td>
-		<td>${emp.empsalary}</td>
-	</tr>
-</c:forEach>
-</table>
+<form action="login" method="post">
+	<p>用户名：<input name="username"></p>
+	<p>密　码：<input name="password" type="password"></p>
+	<p>类　型：<select name="loginType">
+		<option value="2">员工</option>
+		<option value="1">管理员</option>
+	</select></p>
+	<p><input type="submit" value="登录"></p>
+</form>
+<p class="success">${success}</p>
+<p class="error">${error}</p>
 </body>
 </html>

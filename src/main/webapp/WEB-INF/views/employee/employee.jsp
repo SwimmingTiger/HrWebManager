@@ -1,18 +1,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" %>
+<!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Employee</title>
+	<title>员工管理</title>
 	<link rel="stylesheet" href="../resources/css/main.css">
 	<script src="../resources/js/main.js"></script>
 
 </head>
 <body>
-
+<jsp:include page="../nav/adminNav.jsp"></jsp:include>
+<h3>员工列表：</h3>
 <table class="itemsTable">
 	<tr>
-		<th>ID</th>
+		<th>编号</th>
 		<th>姓名</th>
 		<th>薪水</th>
 		<th>工作岗位</th>

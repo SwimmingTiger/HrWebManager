@@ -1,13 +1,15 @@
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" %>
+<!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>全部职业</title>
+	<title>职业管理</title>
 	<link rel="stylesheet" href="../resources/css/main.css">
 	<script src="../resources/js/main.js"></script>
 </head>
 <body>
+<jsp:include page="../nav/adminNav.jsp"></jsp:include>
 <h3>职业列表：</h3>
 <table  class="itemsTable">
 	<tr>

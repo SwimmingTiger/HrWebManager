@@ -33,4 +33,5 @@ encoding//src/main/java/dlnu/web/hrmanager/util/database/Mysql.java=UTF-8
 encoding//src/main/java/dlnu/web/hrmanager/util/database/PreResult.java=UTF-8
 encoding//src/main/java/dlnu/web/hrmanager/util/database/Result.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/login/login.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/nav/adminNav.jsp=UTF-8
 encoding/<project>=UTF-8

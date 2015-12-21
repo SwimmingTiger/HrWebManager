@@ -4,11 +4,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>部门列表</title>
+	<title>部门管理</title>
 	<link rel="stylesheet" href="../resources/css/main.css">
 	<script src="../resources/js/main.js"></script>
 </head>
 <body>
+<jsp:include page="../nav/adminNav.jsp"></jsp:include>
 <h3>部门列表：</h3>
 <table class="itemsTable">
 	<tr>
@@ -19,7 +20,7 @@
 		<th>最高工资</th>
 		<th>平均工资</th>
 		<th>最低工资</th>
-		<th>操作</th>
+		<th></th>
 	</tr>
 <!-- 使用 JSTL标签forEach循环显示部门  -->
 <c:forEach var="dept" items="${deptList}">
