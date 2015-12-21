@@ -32,9 +32,12 @@
 		<td>${0 == dept.salary_avg ? "-" : dept.salary_avg}</td>
 		<td>${0 == dept.salary_min ? "-" : dept.salary_min}</td>
 		<td>
-		<form action="delete" method="post">
+		<form class="toolButton" action="delete" method="post">
 			<input type="hidden" name="id" value="${dept.id}">
 			<input type="submit" onclick="return DeleteConfirm('${dept.name}')" value="删除">
+		</form>
+		<form class="toolButton" onsubmit="return OpenEditWindow(${dept.id})">
+			<input type="submit" value="修改">
 		</form>
 		</td>
 	</tr>

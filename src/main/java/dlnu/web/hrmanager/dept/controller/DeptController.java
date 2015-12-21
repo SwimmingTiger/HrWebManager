@@ -17,12 +17,19 @@ import dlnu.web.hrmanager.dept.entity.Dept;
 import dlnu.web.hrmanager.dept.service.DeptService;
 import dlnu.web.hrmanager.employee.dao.EmpDao;
 import dlnu.web.hrmanager.employee.entity.Emp;
+import dlnu.web.hrmanager.job.dao.JobDao;
 import dlnu.web.hrmanager.util.database.DBException;
 
 @Controller
 public class DeptController {
 
-	@RequestMapping(value = "/dept/list", method = RequestMethod.GET)
+	/**
+	 * 列出部门
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/dept/*", method = RequestMethod.GET)
 	public String DeptList(Locale locale, Model model) {
 		List<Dept> depts = null;
 		int nextId = 1;
@@ -41,11 +48,14 @@ public class DeptController {
 		return "dept/list";
 	}
 	
-	@RequestMapping(value = "/dept/add", method = RequestMethod.GET)
-	public String DeptAddGet(Locale locale, Model model) {
-		return DeptList(locale, model);
-	}
-	
+	/**
+	 * 添加部门
+	 * @param locale
+	 * @param model
+	 * @param name
+	 * @param address
+	 * @return
+	 */
 	@RequestMapping(value = "/dept/add", method = RequestMethod.POST)
 	public String DeptAdd(Locale locale, Model model,
 			@RequestParam("name") String name,
@@ -75,6 +85,13 @@ public class DeptController {
 		return DeptList(locale, model);
 	}
 	
+	/**
+	 * 删除部门
+	 * @param locale
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/dept/delete", method = RequestMethod.POST)
 	public String DeptDelete(Locale locale, Model model,
 			@RequestParam("id") int id) {
@@ -98,6 +115,65 @@ public class DeptController {
 		}
 		
 		return DeptList(locale, model);
+	}
+	
+	@RequestMapping(value = "/dept/edit", method = RequestMethod.GET)
+	public String DeptEditGet(Locale locale, Model model,
+			@RequestParam("id") int id) {
+		try {
+			Dept dept = DeptService.getInstance().getDeptById(id);
+			
+			if (dept.getName() == null) {
+				throw new DeptException("指定的部门不存在");
+			}
+			
+			model.addAttribute("dept", dept);
+			
+			EmpDao empDao = new EmpDao();
+			List<Emp> managerList = empDao.Emplist(dept);
+			model.addAttribute("managerList", managerList);
+		} catch (DBException | DeptException e) {
+			model.addAttribute("error", e.getMessage());
+			return "dept/editError";
+		}
+		
+		return "dept/edit";
+	}
+	
+	@RequestMapping(value = "/dept/edit", method = RequestMethod.POST)
+	public String DeptEditPost(Locale locale, Model model,
+			@RequestParam("id") int id,
+			@RequestParam("name") String name,
+			@RequestParam("address") String address,
+			@RequestParam("manager") int managerID) {
+		try {
+			Dept dept = DeptService.getInstance().getDeptById(id);
+			model.addAttribute("dept", dept);
+			
+			if (dept.getName() == null) {
+				throw new DeptException("指定的部门不存在");
+			}
+			
+			dept.setName(name);
+			dept.setAddress(address);
+			
+			Emp manager = (new EmpDao()).Inquire(managerID);
+			
+			if (manager == null) {
+				manager = new Emp();
+				manager.setEmpID(managerID);
+			}
+			
+			dept.setManager(manager);
+			
+			DeptService.getInstance().editDept(dept);
+			
+		} catch (DBException | DeptException e) {
+			model.addAttribute("error", e.getMessage());
+			return "dept/editError";
+		}
+		
+		return "dept/editSuccess";
 	}
 	
 	private class DeptException extends Exception {
