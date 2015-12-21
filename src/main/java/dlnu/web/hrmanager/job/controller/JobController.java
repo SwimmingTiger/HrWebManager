@@ -25,13 +25,6 @@ public class JobController {
 	@RequestMapping(value = "/job/*", method = RequestMethod.GET)
 	public String joblist(Locale locale, Model model) {
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
 		ArrayList<Job> joblist = JobDao.con().Display();
 		model.addAttribute("DisplayJob", joblist);
 		
@@ -54,8 +47,7 @@ public class JobController {
 			
 			JobDao.con().Add(job);
 		} catch (DBException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 
 		return joblist(locale, model);
@@ -67,10 +59,13 @@ public class JobController {
 		
 		/***************** 删除 *****************/
 		try {
+			if (JobDao.con().Check_id_forDelete(DeleteId)){
+				throw new Exception("此岗位有员工，请先删除员工");
+			}
+			
 			JobDao.con().Delete(DeleteId);
 		} catch (Exception e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 		
 		return joblist(locale, model);
@@ -86,8 +81,7 @@ public class JobController {
 			model.addAttribute("JobEdit", job);			
 			
 		} catch (Exception e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 		
 		return joblist(locale, model);
@@ -101,7 +95,7 @@ public class JobController {
 			@RequestParam(value="最低工资") double EditSalary_min) {
 
 		/***************** 修改 *****************/
-		try {	
+		try {
 			Job job = new Job();
 			job.id = EditId;
 			job.name = EditName;
@@ -109,8 +103,7 @@ public class JobController {
 			job.salary_min = EditSalary_min;		
 			JobDao.con().Change(job);
 		} catch (Exception e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 		
 		return joblist(locale, model);

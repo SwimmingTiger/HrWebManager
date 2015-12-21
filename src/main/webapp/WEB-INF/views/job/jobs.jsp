@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>全部职业</title>
 	<link rel="stylesheet" href="../resources/css/main.css">
+	<script src="../resources/js/main.js"></script>
 </head>
 <body>
 <h3>职业列表：</h3>
@@ -26,7 +27,7 @@
 		<td>${job.salarymin}</td>
 		<td>
 			<form class="toolButton" action="del" method="post">
-				<input type="submit"  value = "删除">
+				<input type="submit"  value = "删除" onclick="return DeleteConfirm('${job.name}')">
 				<input type="hidden" name="id" value = "${job.id}">					
 			</form>
 
@@ -43,14 +44,21 @@
 			<td><input name = "岗位名称" value="${JobEdit.name}"></td>		
 			<td>-</td>		
 			<td><input name = "最高工资" value="${JobEdit.salarymax}"></td>		
-			<td><input name = "最低工资" value="${JobEdit.salarymin}"></td>	
+			<td><input name = "最低工资" value="${JobEdit.salarymin}"></td>
+			<td>
 			<c:if test="${JobEdit == null}">
-				<td><input type="submit" value="添加"></td>
+				<input type="submit" value="添加">
 			</c:if>
 			<c:if test="${JobEdit != null}">
-				<td><input type="submit" value="编辑"></td>
+				<input type="submit" value="保存">
 			</c:if>
+			
+				<input type="reset" value="重置">
+			</td>
 	</form>
 </table>
+
+<p class="success">${success}</p>
+<p class="error">${error}</p>
 </body>
 </html>

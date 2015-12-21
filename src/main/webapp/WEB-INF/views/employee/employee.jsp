@@ -6,6 +6,7 @@
 	<title>Employee</title>
 	<link rel="stylesheet" href="../resources/css/main.css">
 	<script src="../resources/js/main.js"></script>
+
 </head>
 <body>
 
@@ -54,7 +55,7 @@
 			</c:forEach>
 		</select>
 		</td>
-		<td><input name="empdate"></td>
+		<td><input name="empdate" class="datepicker"></td>
 		<td>
 		<select name="dept">
 			<c:forEach var="dept" items="${deptList}">
@@ -81,7 +82,7 @@
 			</c:forEach>
 		</select>
 		</td>
-		<td><input name="empdate" value="${editEmp.empdate }"></td>
+		<td><input name="empdate" value="${editEmp.empdate}" class="datepicker"></td>
 		<td>
 		<select name="dept">
 			<c:forEach var="dept" items="${deptList}">
@@ -100,5 +101,11 @@
 	</tr>
 </table>
 
+<p class="success">${success}</p>
+<p class="error">${error}</p>
+
+<script>
+
+</script>
 </body>
 </html>

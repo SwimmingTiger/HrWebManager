@@ -38,8 +38,7 @@ public class EmpController {
 				
 		
 		} catch (DBException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 		
 		return "employee/employee";
@@ -69,8 +68,7 @@ public class EmpController {
 			dao.Add(emp1);
 			
 		} catch (DBException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 		
 		return home(locale, model);
@@ -87,8 +85,7 @@ public class EmpController {
 			EmpDao dao2 = new EmpDao();
 			dao2.Dele(emp1);
 		} catch (DBException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 		
 		
@@ -104,8 +101,7 @@ public class EmpController {
 			Emp editEmp = dao.Inquire(empID);
 			model.addAttribute("editEmp", editEmp);
 		} catch (DBException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 		
 		
@@ -135,8 +131,7 @@ public class EmpController {
 			dao.Mod(editEmp);
 
 		} catch (DBException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
 		}
 		
 		
