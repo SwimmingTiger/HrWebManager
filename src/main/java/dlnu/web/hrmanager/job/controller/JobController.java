@@ -22,7 +22,7 @@ import dlnu.web.hrmanager.util.database.DBException;
 @Controller
 public class JobController {
 
-	@RequestMapping(value = "/job/joblist", method = RequestMethod.GET)
+	@RequestMapping(value = "/job/*", method = RequestMethod.GET)
 	public String joblist(Locale locale, Model model) {
 		
 		Date date = new Date();
@@ -97,7 +97,6 @@ public class JobController {
 	public String editSave(Locale locale, Model model,
 			@RequestParam(value="编号") int EditId,
 			@RequestParam(value="岗位名称") String EditName,
-			@RequestParam(value="平均工资") double EditSalary_avg,
 			@RequestParam(value="最高工资") double EditSalary_max,
 			@RequestParam(value="最低工资") double EditSalary_min) {
 
@@ -106,7 +105,6 @@ public class JobController {
 			Job job = new Job();
 			job.id = EditId;
 			job.name = EditName;
-			job.salary_avg = EditSalary_avg;
 			job.salary_max = EditSalary_max;
 			job.salary_min = EditSalary_min;		
 			JobDao.con().Change(job);

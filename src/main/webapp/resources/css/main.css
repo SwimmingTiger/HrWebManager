@@ -22,3 +22,7 @@ input.address {
 .success {
 	color: green;
 }
+
+.toolButton {
+	display: inline;
+}
