@@ -4,13 +4,13 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>职业管理</title>
+	<title>岗位管理</title>
 	<link rel="stylesheet" href="../resources/css/main.css">
 	<script src="../resources/js/main.js"></script>
 </head>
 <body>
 <jsp:include page="../nav/adminNav.jsp"></jsp:include>
-<h3>职业列表：</h3>
+<h3>岗位列表：</h3>
 <table  class="itemsTable">
 	<tr>
 		<th>编号</th>

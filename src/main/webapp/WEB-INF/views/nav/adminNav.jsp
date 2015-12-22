@@ -7,7 +7,7 @@
 	-
 	<a href="../employee/list">员工管理</a>
 	-
-	<a href="../job/list">职业管理</a>
+	<a href="../job/list">岗位管理</a>
 	-
 	<a href="../dept/list">部门管理</a>
 </nav>

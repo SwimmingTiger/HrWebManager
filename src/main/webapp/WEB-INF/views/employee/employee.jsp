@@ -80,7 +80,7 @@
 		<td>
 		<select name="job">
 			<c:forEach var="job" items="${jobList}">
-			<option value="${job.id}">${job.name}</option>
+			<option value="${job.id}" ${job.id == editEmp.emppost.id ? 'selected' : ''}>${job.name}</option>
 			</c:forEach>
 		</select>
 		</td>
@@ -88,7 +88,7 @@
 		<td>
 		<select name="dept">
 			<c:forEach var="dept" items="${deptList}">
-			<option value="${dept.id}">${dept.name}</option>
+			<option value="${dept.id}" ${dept.id == editEmp.empdept.id ? 'selected' : ''}>${dept.name}</option>
 			</c:forEach>
 		</select>
 		</td>

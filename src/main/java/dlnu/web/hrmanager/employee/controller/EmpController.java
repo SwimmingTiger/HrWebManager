@@ -44,6 +44,15 @@ public class EmpController {
 		return "employee/employee";
 	}
 	
+	public void salaryCheck(Emp emp) throws Exception {
+		if (emp.getEmpsalary() > emp.getEmppost().getSalarymax() || 
+			emp.getEmpsalary() < emp.getEmppost().getSalarymin())
+		{
+			throw new Exception("工资不在范围内：工资范围为" + emp.getEmppost().getSalarymin() +
+					"到" + emp.getEmppost().getSalarymax() + "元");
+		}
+	}
+	
 	@RequestMapping(value = "/employee/add", method = RequestMethod.POST)
 	public String add(Locale locale, Model model,
 			@RequestParam(value="empname") String empname,
@@ -65,9 +74,11 @@ public class EmpController {
 			emp1.setEmpdate(empdate);
 			emp1.setEmpdept(DeptService.getInstance().getDeptById(empdept));
 			
+			salaryCheck(emp1);
+			
 			dao.Add(emp1);
 			
-		} catch (DBException e) {
+		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
 		
@@ -128,9 +139,12 @@ public class EmpController {
 			editEmp.setEmppost(job.Inquire(emppost));
 			editEmp.setEmpdate(empdate);
 			editEmp.setEmpdept(DeptService.getInstance().getDeptById(empdept));
+			
+			salaryCheck(editEmp);
+			
 			dao.Mod(editEmp);
 
-		} catch (DBException e) {
+		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
 		

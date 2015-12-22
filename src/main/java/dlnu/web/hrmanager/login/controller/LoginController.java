@@ -22,6 +22,16 @@ import dlnu.web.hrmanager.util.database.DBException;
 
 @Controller
 public class LoginController {
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public void DefaultPage(Locale locale, Model model,
+			HttpServletResponse response) {
+		try {
+			response.sendRedirect("login/login");
+		} catch (IOException e) {
+			// ignore
+		}
+	}
 
 	@RequestMapping(value = "/login/*", method = RequestMethod.GET)
 	public String loginGet(Locale locale, Model model) {
